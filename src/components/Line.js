@@ -1,6 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+/*
+* Component displays line information as how it's seen in list view.
+*/
 function Line(props) {
   return (
     <div>

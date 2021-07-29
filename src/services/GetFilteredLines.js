@@ -10,8 +10,8 @@ function GetFilteredLines(filterStr, lines) {
     const filterRegExp = new RegExp(filterStr.replace(/\s+/g, ''), 'gi');
     let isIncluded = filterRegExp.test(line.name.replace(/\s+/g, ''));
     /*
-    * If line isn't included based on it's nagetme, let's see if it should be included
-    * based on stop or station name.
+    * If line isn't included based on it's name, let's see if it should be included
+    * based on stop or station names it has.
     */
     if (isIncluded === false) {
         isIncluded = line.stopsOrStations.some(s => filterRegExp.test(s.name.replace(/\s+/g, '')));
