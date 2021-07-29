@@ -18,9 +18,9 @@ function Line(props) {
         <p className="line-card__stops-or-stations">
           {props.data.stopsOrStations.map((s, index) => {
             return (
-              <span key={index}>
+              <span key={index} className="line-card__next-stop-or-station">
                 {index < props.data.stopsOrStations.length - 1
-                  ? <span>{s.name} <i className="line-card__next-stop-or-station fas fa-angle-right"></i></span>
+                  ? <span>{s.name} <i className="line-card__next-stop-or-station-icon fas fa-angle-right"></i></span>
                   : <span>{s.name}</span>}
               </span>
             )
