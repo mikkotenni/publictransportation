@@ -15,7 +15,7 @@ export default function App() {
   return (
     <Router>
       <div>
-        <h1 className="heading--large">Barcelona Public Transportation Challenge</h1>
+        <h1 className="light-purple">Barcelona Public Transportation Challenge</h1>
         {/*
           A <Switch> looks through all its children <Route>
           elements and renders the first one whose path

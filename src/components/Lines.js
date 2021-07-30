@@ -33,7 +33,9 @@ class Lines extends Component {
     const filteredLines = GetFilteredLines(this.state.filterStr, this.state.lines);
     return (
       <div>
-        <input type="text" className="filter" value={this.state.filterStr} onChange={this.onChangeHandler.bind(this)} placeholder="Filter by names..."></input>
+        <input type="text" className="filter"
+          value={this.state.filterStr} onChange={this.onChangeHandler.bind(this)}
+          placeholder="Filter by names..." className="pa3 w-100 ba br2 b--light-purple"></input>
         <div className="line-cards">
           {filteredLines.map((line, index) => <Line data={line} key={index + '_' + line.id} />)}
         </div>
