@@ -20,7 +20,7 @@ share it so it can be useful for others.\
 
 # Notes
 
-Lines this application is listing are sorted simply in alhabetical order. It's difficult to say would it make sense to sort them by
+Lines are sorted by id in ascending order. But in a way that subway lines come first. It's difficult to say would it make sense to sort them by
 colors as the meaning of it is unclear. Also, as user is able to filter lines, listing is just a starting point.
 
 # Getting Started with this application

@@ -34,8 +34,10 @@ const GetLines = new Promise((resolve, reject) => {
         stopsOrStations
       }
     });
-    // Lines are sorted by alphabetically by names.
-    resolve(busLines.concat(metroLines).sort((a, b) => (a.name > b.name) ? 1 : (b.name > a.name) ? - 1 : 0));
+    // Lines are sorted by id in ascending order. But in a way that subway lines come first.
+    busLines.sort((a, b) => (a.id > b.id) ? 1 : (b.id > a.id) ? - 1 : 0);
+    metroLines.sort((a, b) => (a.id > b.id) ? 1 : (b.id > a.id) ? - 1 : 0);
+    resolve(metroLines.concat(busLines));
   }, 1000);
 
 });
