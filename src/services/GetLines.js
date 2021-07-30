@@ -3,7 +3,10 @@ import lines from "./lines.js";
 // CORS prevents actual requests which I'm imitating here.
 const GetLines = new Promise((resolve, reject) => {
   setTimeout(() => {
-    // FIXME: O(n2) algorithm into something more efficient. Now there's nested iterations.
+    /*
+    * FIXME: O(n2) algorithm into something more efficient. Now there's nested
+    * iterations. No CRUD actions involved at the moment.
+    */
     let busLines = lines.data.bLines.edges.map(line => {
       const { id, name, color } = line.node;
       const stopsOrStations = line.node.stops.edges.map(stop => {
@@ -35,8 +38,8 @@ const GetLines = new Promise((resolve, reject) => {
       }
     });
     // Lines are sorted by id in ascending order. But in a way that subway lines come first.
-    busLines.sort((a, b) => (a.id > b.id) ? 1 : (b.id > a.id) ? - 1 : 0);
-    metroLines.sort((a, b) => (a.id > b.id) ? 1 : (b.id > a.id) ? - 1 : 0);
+    busLines.sort((a, b) => (a.id - b.id));
+    metroLines.sort((a, b) => (a.id - b.id));
     resolve(metroLines.concat(busLines));
   }, 1000);
 
