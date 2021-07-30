@@ -7,8 +7,9 @@
 */
 function GetFilteredLines(filterStr, lines) {
   return lines.filter(line => {
-    const filterRegExp = new RegExp(filterStr.replace(/\s+/g, ''), 'gi');
-    return filterRegExp.test((line.name + line.stopsOrStations.join('')).replace(/\s+/g, ''));
+    return `${line.name}${line.stopsOrStations.join('')}`
+      .replace(/\s+/g, '')
+      .includes(filterStr.replace(/\s+/g, ''));
   });
 }
 
