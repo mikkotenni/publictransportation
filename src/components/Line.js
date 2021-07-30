@@ -7,7 +7,7 @@ import BasicLineInfo from "./BasicLineInfo";
 */
 function Line(props) {
   return (
-    <Link className="no-underline dark-gray db bg-white pa3 pt0 mt2 br2" to={'/line-details/' + props.data.type + '/' + props.data.id}>
+    <Link className="no-underline dark-gray db bg-animate bg-near-white hover-bg-white pa3 pt0 mt2 br1" style={{ flexBasis: '50%' }} to={'/line-details/' + props.data.type + '/' + props.data.id}>
       <BasicLineInfo data={props.data} />
       {props.data.stopsOrStations.map((s, index) => {
         return (

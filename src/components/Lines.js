@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import GetLines from "../services/GetLines";
 import GetFilteredLines from '../services/GetFilteredLines';
 import Line from './Line';
+import Spinner from './Spinner';
 
 /*
 * This component manages lines list and filtering of it.
@@ -27,11 +28,19 @@ class Lines extends Component {
 
   render() {
     const filteredLines = GetFilteredLines(this.state.filterStr, this.state.lines);
+    if (this.state.lines.length === 0) {
+      return (
+        <Spinner />
+      )
+    }
+
     return (
       <section>
         <input type="text" value={this.state.filterStr} onChange={this.onChangeHandler.bind(this)}
-          placeholder="Filter by names..." className="pa3 w-100 ba br2 b--light-purple"></input>
-        {filteredLines.map((line, index) => <Line data={line} key={index + '_' + line.id} />)}
+          placeholder="Filter by names..." className="pa3 w-100 ba br1 b--gray"></input>
+        <div className="flex flex-wrap">
+          {filteredLines.map((line, index) => <Line data={line} key={index + '_' + line.id} />)}
+        </div>
       </section>
     )
   }
