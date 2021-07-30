@@ -1,17 +1,23 @@
 import lines from "./lines.js";
 
-// CORS prevents actual requests which I'm merely pretending to be doing here.
+/*
+* CORS prevents actual requests which I'm merely pretending to be doing here.
+* @param {string} type - b for bus and m for subway.
+* @param {integer} id - of line.
+* @returns {object} - detailed information of given line. 
+*/
 const GetLineDetails = (type, id) => {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
-      const lineArr = type === 'b' ? lines.data.bLines.edges : lines.data.mLines.edges;
-      const line = lineArr.find(l => {
+      // FIXME: Handle correct lines array in case of having more than two types.
+      const linesByType = type === 'b' ? lines.data.bLines.edges : lines.data.mLines.edges;
+      const line = linesByType.find(l => {
         return l.node.id === +id;
       }).node;
       const details = {...line, type};
       if (details.type === 'b') {
         /*
-        * FIXME: Bus lines don't have this information.
+        * FIXME: Bus lines don't have this information apart from single exception.
         * Challenge states "The first and the last station should be highlighted.", so supposedly
         * this is only for subways with stations.
         */

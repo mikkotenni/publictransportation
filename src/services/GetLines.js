@@ -3,6 +3,7 @@ import lines from "./lines.js";
 // CORS prevents actual requests which I'm imitating here.
 const GetLines = new Promise((resolve, reject) => {
   setTimeout(() => {
+    // FIXME: O(n2) algorithm into something more efficient. Now there's nested iterations.
     let busLines = lines.data.bLines.edges.map(line => {
       const { id, name, color } = line.node;
       const stopsOrStations = line.node.stops.edges.map(stop => {

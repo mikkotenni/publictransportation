@@ -14,8 +14,12 @@ class LineDetails extends Component {
   }
 
   async componentDidMount() {
-    const details = await GetLineDetails(this.props.match.params.type, this.props.match.params.id);
-    this.setState({ details });
+    try {
+      const details = await GetLineDetails(this.props.match.params.type, this.props.match.params.id);
+      this.setState({ details });
+    } catch (e) {
+      // TODO: Proper error handling.
+    }
   }
 
   render() {
