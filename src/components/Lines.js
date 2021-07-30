@@ -28,11 +28,11 @@ class Lines extends Component {
   render() {
     const filteredLines = GetFilteredLines(this.state.filterStr, this.state.lines);
     return (
-      <div>
+      <section>
         <input type="text" value={this.state.filterStr} onChange={this.onChangeHandler.bind(this)}
           placeholder="Filter by names..." className="pa3 w-100 ba br2 b--light-purple"></input>
         {filteredLines.map((line, index) => <Line data={line} key={index + '_' + line.id} />)}
-      </div>
+      </section>
     )
   }
 }
