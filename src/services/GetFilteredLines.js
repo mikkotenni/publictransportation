@@ -7,9 +7,18 @@
 */
 function GetFilteredLines(filterStr, lines) {
   return lines.filter(line => {
-    return `${line.name}${line.stopsOrStations.join('')}`
-      .replace(/\s+/g, '')
-      .includes(filterStr.replace(/\s+/g, ''));
+    const filterRegExp = new RegExp(filterStr.replace(/\s+/g, ''), 'gi');
+    let isIncluded = filterRegExp.test(line.name.replace(/\s+/g, ''));
+
+    /*
+    * If line isn't included based on it's name, let's see if it should be included
+    * based on stop or station names it has.
+    */
+    if (isIncluded === false) {
+        isIncluded = line.stopsOrStations.some(s => filterRegExp.test(s.name.replace(/\s+/g, '')));
+    }
+
+    return isIncluded;
   });
 }
 
