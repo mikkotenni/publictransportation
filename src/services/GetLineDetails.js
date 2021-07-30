@@ -7,6 +7,7 @@ import lines from "./lines.js";
 * @returns {object} - detailed information of given line. 
 */
 const GetLineDetails = (type, id) => {
+  // Returned Promise will be able to access type and id from outer scope (closures).
   return new Promise((resolve, reject) => {
     setTimeout(() => {
       // FIXME: Handle correct lines array in case of having more than two types.
