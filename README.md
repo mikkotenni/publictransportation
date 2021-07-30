@@ -15,8 +15,8 @@ of Vue components.
 
 ## Public resources I have contributed to
 [Vuetify Datepicker Proto](https://codepen.io/mikkotenni/pen/bGWYNJv) this is an example of how I tend to prototype things and then
-share it so it can be useful for others.
-[GitHub/mikkotenni](https://github.com/mikkotenni) 
+share it so it can be useful for others.\
+[GitHub/mikkotenni](https://github.com/mikkotenni) is also obviously one.
 
 # Getting Started with this application
 
