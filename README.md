@@ -1,3 +1,23 @@
+# Background
+
+## My online references
+
+I'm regularly reading [CSS-Tricks](https://css-tricks.com/) and [Smashing Magazine](https://www.smashingmagazine.com/).
+
+## Latest articles/videos that I still remember (for whatever reason that may be)
+
+[A Complete Guide to Custom Properties](https://css-tricks.com/a-complete-guide-to-custom-properties/) is a nice round-up
+of CSS custom properties.\
+[What are Design Tokens? with Jina Anne](https://podcast.smashingmagazine.com/episodes/what-are-design-tokens-with-jina-anne) was nice
+to listen to. It's about design tokens and how they relate to design systems.\
+[Vue JS 2 Tutorial #38 - Mixins](https://www.youtube.com/watch?v=YZuml1Y9BmQ) a video about distributing reusable features in terms
+of Vue components.
+
+## Public resources I have contributed to
+[Vuetify Datepicker Proto](https://codepen.io/mikkotenni/pen/bGWYNJv) this is an example of how I tend to prototype things and then
+share it so it can be useful for others.
+[GitHub/mikkotenni](https://github.com/mikkotenni) 
+
 # Getting Started with this application
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
