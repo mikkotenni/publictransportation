@@ -1,3 +1,6 @@
+/*
+* Loading spinner component.
+*/
 function Spinner() {
   return (
     <section>
