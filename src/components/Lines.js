@@ -5,10 +5,6 @@ import Line from './Line';
 
 /*
 * This component manages lines list and filtering of it.
-* FIXME: Make filter input component in case stops or stations need to be
-* filtered. Or follow the rule of three. Lines view bonus section in challenge states "This list
-* should be filtered by line or station name too." but I'm not entirely sure how that works
-* as lines are filtered already here.
 */
 class Lines extends Component {
   constructor() {
@@ -33,12 +29,9 @@ class Lines extends Component {
     const filteredLines = GetFilteredLines(this.state.filterStr, this.state.lines);
     return (
       <div>
-        <input type="text" className="filter"
-          value={this.state.filterStr} onChange={this.onChangeHandler.bind(this)}
+        <input type="text" value={this.state.filterStr} onChange={this.onChangeHandler.bind(this)}
           placeholder="Filter by names..." className="pa3 w-100 ba br2 b--light-purple"></input>
-        <div className="line-cards">
-          {filteredLines.map((line, index) => <Line data={line} key={index + '_' + line.id} />)}
-        </div>
+        {filteredLines.map((line, index) => <Line data={line} key={index + '_' + line.id} />)}
       </div>
     )
   }

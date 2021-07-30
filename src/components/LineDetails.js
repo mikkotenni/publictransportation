@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { withRouter } from "react-router";
 import GetLineDetails from "../services/GetLineDetails";
 import { Link } from "react-router-dom";
+import BasicLineInfo from "./BasicLineInfo";
 
 /*
 * Gets and displays line details based on URL parameter information.
@@ -15,7 +16,6 @@ class LineDetails extends Component {
   async componentDidMount() {
     const details = await GetLineDetails(this.props.match.params.type, this.props.match.params.id);
     this.setState({ details });
-    console.log(this.state.details);
   }
 
   render() {
@@ -26,17 +26,8 @@ class LineDetails extends Component {
             <i className="fas fa-arrow-alt-circle-left f3 light-purple"></i>
           </Link>
         </nav>
-        <section className="bg-white ph3 pb1 mt2">
-          <div className="flex items-center">
-            <div className="pv2 ph3 mr1 white br1" style={{ backgroundColor: `#${this.state.details.color}` }}>
-              {this.state.details.type === 'b' && <i className="fas fa-bus"></i>}
-              {this.state.details.type === 'm' && <i className="fas fa-subway"></i>}
-            </div>
-            <div className="mr3" style={{ color: `#${this.state.details.color}` }}>
-              {this.state.details.id}
-            </div>
-            <h4>{this.state.details.name}</h4>
-          </div>
+        <section className="bg-white ph3 pb3 mt2">
+          <BasicLineInfo data={this.state.details} />
           {this.state.details.stopsOrStations.length > 0 &&
             <table className="w-100">
               <thead>
