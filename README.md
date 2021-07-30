@@ -18,6 +18,11 @@ of Vue components.
 share it so it can be useful for others.\
 [GitHub/mikkotenni](https://github.com/mikkotenni) is also obviously one.
 
+# Notes
+
+Lines this application is listing are sorted simply in alhabetical order. It's difficult to say would it make sense to sort them by
+colors as the meaning of it is unclear. Also, as user is able to filter lines, listing is just a starting point.
+
 # Getting Started with this application
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
