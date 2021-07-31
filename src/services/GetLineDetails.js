@@ -1,3 +1,4 @@
+// CORS prevents actual requests, using static data instead.
 import lines from "./lines.js";
 
 // For choosing correct lines and data traversing by type.
@@ -9,8 +10,8 @@ const lineTypesWithStops = ['b'];
 const lineTypesWithStations = ['m'];
 
 /*
-* CORS prevents actual requests which I'm merely pretending to be doing here.
-* @param {string} type - b for bus and m for subway.
+* Provides detailed information of a line.
+* @param {string} type - 'b' for bus and 'm' for subway.
 * @param {integer} id - of line.
 * @returns {object} - detailed information of given line. 
 */
