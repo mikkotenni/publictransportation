@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import BasicLineInfo from './BasicLineInfo';
+import BasicLineInfo from '../components/BasicLineInfo';
 
 test('render line name in basic line info', () => {
     const line = {

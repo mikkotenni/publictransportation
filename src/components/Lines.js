@@ -40,8 +40,7 @@ class Lines extends Component {
           value={this.state.filterStr}
           onChange={this.onChangeHandler.bind(this)}
           placeholder="Filter by names..."
-          className="pa3 w-100 ba br1 b--gray"
-          data-testid="filter-input"></input>
+          className="pa3 w-100 ba br1 b--gray"></input>
         <div className="flex flex-wrap">
           {filteredLines.map((line, index) => <Line data={line} key={index + '_' + line.id} />)}
         </div>
