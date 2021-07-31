@@ -50,7 +50,10 @@ class LineDetails extends Component {
           </Link>
         </nav>
         <section className="bg-white ph3 pb3 mt2">
-          <BasicLineInfo data={this.state.details} />
+          <BasicLineInfo type={this.state.details.type}
+            color={`#${this.state.details.color}`}
+            number={this.state.details.id}
+            name={this.state.details.name} />
           {this.state.details.halts.length > 0 &&
             <table className="w-100">
               <thead>

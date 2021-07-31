@@ -17,7 +17,10 @@ function Line(props) {
 
   return (
     <Link className="no-underline dark-gray db bg-animate bg-near-white hover-bg-white pa3 pt0 mt2 br1" style={{ flexBasis: '50%' }} to={'/line-details/' + props.data.type + '/' + props.data.id}>
-      <BasicLineInfo data={props.data} />
+      <BasicLineInfo type={props.data.type}
+        color={`#${props.data.color}`}
+        number={props.data.id}
+        name={props.data.name} />
       {haltsList}
     </Link>
   )

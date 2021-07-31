@@ -8,7 +8,10 @@ test('render line name in basic line info', () => {
         color: '000',
         type: 'b',
     };
-    render(<BasicLineInfo data={line} />);
+    render(<BasicLineInfo type={line.type}
+        color={`#${line.color}`}
+        number={line.id}
+        name={line.name} />);
     const headingElement = screen.getByText(/test line/i);
     expect(headingElement).toBeInTheDocument();
 });
