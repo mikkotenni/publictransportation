@@ -1,5 +1,5 @@
 // CORS prevents actual requests, using static data instead.
-import lines from "./lines.js";
+import lines from "./_lines.js";
 
 // For choosing correct lines and data traversing by type.
 const linesMap = new Map([

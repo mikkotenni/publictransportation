@@ -1,5 +1,5 @@
 // CORS prevents actual requests, using static data instead.
-import lines from "./lines.js";
+import lines from "./_lines.js";
 
 // Collect halt information.
 function getHalts(edges) {
