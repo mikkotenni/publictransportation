@@ -30,6 +30,10 @@ export default function App() {
             <LineDetails />
           </Route>
         </Switch>
+        <footer className="tc mv5">
+          <i className="far fa-grin-beam f1"></i>
+          <p>Now you know everything there is to know about public transportation lines in Barcelona!</p>
+        </footer>
       </div>
     </Router>
   );
