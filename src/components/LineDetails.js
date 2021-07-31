@@ -24,6 +24,17 @@ class LineDetails extends Component {
   }
 
   render() {
+    const haltsRows = this.state.details.halts.map((h, index) => {
+      return (
+        <tr key={h.id} className="striped--near-white">
+          <td className="pv2 ph3 tl">{h.name}</td>
+          <td className="pv2 ph3 tc">{this.state.details.originStopOrStation === h.id && <i className="fas fa-circle f7"></i>}</td>
+          <td className="pv2 ph3 tc">{this.state.details.endingStopOrStation === h.id && <i className="fas fa-circle f7"></i>}</td>
+          <td className="pv2 ph3 tc">{h.lines.some(l => l !== this.state.details.name) && <i className="fas fa-circle f7"></i>}</td>
+        </tr>
+      )
+    });
+
     if (typeof this.state.details.name === 'undefined') {
       return (
         <Spinner />
@@ -50,16 +61,7 @@ class LineDetails extends Component {
                 </tr>
               </thead>
               <tbody>
-                {this.state.details.halts.map((s, index) => {
-                  return (
-                    <tr key={index} className="striped--near-white">
-                      <td className="pv2 ph3 tl">{s.name}</td>
-                      <td className="pv2 ph3 tc">{this.state.details.originStopOrStation === s.id && <i className="fas fa-circle f7"></i>}</td>
-                      <td className="pv2 ph3 tc">{this.state.details.endingStopOrStation === s.id && <i className="fas fa-circle f7"></i>}</td>
-                      <td className="pv2 ph3 tc">{s.lines.some(l => l !== this.state.details.name) && <i className="fas fa-circle f7"></i>}</td>
-                    </tr>
-                  )
-                })}
+                {haltsRows}
               </tbody>
             </table>}
         </section>
