@@ -49,8 +49,10 @@ class LineDetails extends Component {
     return (
       <div>
         <nav>
-          <Link to="/" className="dark-gray">
-            <i className="fas fa-arrow-alt-circle-left"></i> Find another line
+          <Link to="/"
+            className="dark-gray"
+            aria-label="See all transportation lines or find another">
+            <i className="fas fa-arrow-alt-circle-left"></i> All transportation lines
           </Link>
         </nav>
         <section className="bg-white ph3 pb3 mt2">
@@ -59,7 +61,7 @@ class LineDetails extends Component {
             number={this.state.details.id}
             name={this.state.details.name} />
           {this.state.details.halts.length > 0 &&
-            <table className="w-100">
+            <table className="w-100" aria-label="Stops or stations on this line">
               <thead>
                 <tr>
                   <th className="pv2 ph3 tl fw3">Stop/station</th>

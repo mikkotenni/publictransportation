@@ -17,14 +17,18 @@ function Line(props) {
   });
 
   return (
-    <Link className="no-underline dark-gray db bg-animate bg-near-white hover-bg-white pa3 pt0 mt2 br1"
+    <Link
+      className="no-underline dark-gray db bg-animate bg-near-white hover-bg-white pa3 pt0 mt2 br1"
       style={{ flexBasis: '50%' }}
-      to={`/line-details/${type}/${id}`}>
+      to={`/line-details/${type}/${id}`}
+      aria-label="See details for a list of stops or stations">
       <BasicLineInfo type={type}
         color={`#${color}`}
         number={id}
         name={name} />
-      {haltsList}
+      <div aria-hidden="true">
+        {haltsList}
+      </div>
     </Link>
   )
 }

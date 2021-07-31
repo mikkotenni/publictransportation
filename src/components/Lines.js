@@ -40,9 +40,10 @@ class Lines extends Component {
         <input type="text"
           value={this.state.filterStr}
           onChange={this.onChangeHandler.bind(this)}
-          placeholder="Filter by names..."
+          placeholder="Name of line, stop or station"
           className="pa3 w-100 ba br1 b--gray"
-          ref={input => { this.filterInput = input; }}></input>
+          ref={input => { this.filterInput = input; }}
+          aria-label="Filter lines by the name of line, stop or station"></input>
         <div className="flex flex-wrap">
           {filteredLines.map((l, index) => <Line data={l} key={`${index}${l.id}`} />)}
         </div>
