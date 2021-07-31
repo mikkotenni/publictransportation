@@ -1,41 +1,37 @@
 // CORS prevents actual requests, using static data instead.
 import lines from "./lines.js";
 
+// Collect halt information.
+function getHalts(edges) {
+  return edges.map(edge => {
+    return {
+      name: edge.node.name,
+    }
+  });
+}
+
 // Provides information about all lines.
 const GetLines = new Promise((resolve, reject) => {
   setTimeout(() => {
-    /*
-    * FIXME: O(n2) algorithm into something more efficient. Now there's nested
-    * iterations. No CRUD actions involved at the moment.
-    */
+    // FIXME: O(n2) algorithm into something more efficient.
     let bLines = lines.data.bLines.edges.map(line => {
       const { id, name, color } = line.node;
-      const halts = line.node.stops.edges.map(stop => {
-        return {
-          name: stop.node.name,
-        }
-      });
       return {
         id,
         name,
         color,
         type: 'b',
-        halts
+        halts: getHalts(line.node.stops.edges),
       }
     });
     let mLines = lines.data.mLines.edges.map(line => {
       const { id, name, color } = line.node;
-      const halts = line.node.stations.edges.map(station => {
-        return {
-          name: station.node.name,
-        }
-      });
       return {
         id,
         name,
         color,
         type: 'm',
-        halts
+        halts: getHalts(line.node.stations.edges),
       }
     });
     // Lines are sorted by id in ascending order. Subway lines come first.
