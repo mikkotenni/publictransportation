@@ -10,7 +10,7 @@ import Spinner from './Spinner';
 class Lines extends Component {
   constructor() {
     super();
-    this.state = { lines: [], filterStr: '' };
+    this.state = { lines: null, filterStr: '' };
   }
 
   async componentDidMount() {
@@ -28,13 +28,13 @@ class Lines extends Component {
   }
 
   render() {
-    const filteredLines = GetFilteredLines(this.state.filterStr, this.state.lines);
-    if (this.state.lines.length === 0) {
+    if (!this.state.lines) {
       return (
         <Spinner />
       )
     }
 
+    const filteredLines = GetFilteredLines(this.state.filterStr, this.state.lines);
     return (
       <section>
         <input type="text"

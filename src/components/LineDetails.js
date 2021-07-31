@@ -11,12 +11,13 @@ import Spinner from './Spinner';
 class LineDetails extends Component {
   constructor() {
     super();
-    this.state = { details: { halts: [] } };
+    this.state = { details: null };
   }
 
   async componentDidMount() {
     try {
-      const details = await GetLineDetails(this.props.match.params.type, this.props.match.params.id);
+      const details =
+        await GetLineDetails(this.props.match.params.type, this.props.match.params.id);
       this.setState({ details });
     } catch (e) {
       console.error(e);
@@ -24,24 +25,27 @@ class LineDetails extends Component {
   }
 
   render() {
-    const haltsRows = this.state.details.halts.map((h, index) => {
-      // Key requires some special attention as there are duplicates in data.
-      return (
-        <tr key={`${index}${h.id}`} className="striped--near-white">
-          <td className="pv2 ph3 tl">{h.name}</td>
-          <td className="pv2 ph3 tc">{this.state.details.originStopOrStation === h.id && <i className="fas fa-circle f7"></i>}</td>
-          <td className="pv2 ph3 tc">{this.state.details.endingStopOrStation === h.id && <i className="fas fa-circle f7"></i>}</td>
-          <td className="pv2 ph3 tc">{h.lines.some(l => l !== this.state.details.name) && <i className="fas fa-circle f7"></i>}</td>
-        </tr>
-      )
-    });
-
-    if (typeof this.state.details.name === 'undefined') {
+    if (!this.state.details) {
       return (
         <Spinner />
       )
     }
 
+    const haltsRows = this.state.details.halts.map((h, index) => {
+      // Key requires some special attention as there are duplicates in data.
+      return (
+        <tr key={`${index}${h.id}`} className="striped--near-white">
+          <td className="pv2 ph3 tl">{h.name}</td>
+          <td className="pv2 ph3 tc">{this.state.details.originStopOrStation === h.id
+            && <i className="fas fa-circle f7"></i>}</td>
+          <td className="pv2 ph3 tc">{this.state.details.endingStopOrStation === h.id
+            && <i className="fas fa-circle f7"></i>}</td>
+          <td className="pv2 ph3 tc">{h.lines.some(l => l !== this.state.details.name)
+            && <i className="fas fa-circle f7"></i>}</td>
+        </tr>
+      )
+    });
+    
     return (
       <div>
         <nav>
