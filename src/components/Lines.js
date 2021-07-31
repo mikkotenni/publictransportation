@@ -44,7 +44,7 @@ class Lines extends Component {
           className="pa3 w-100 ba br1 b--gray"
           ref={input => { this.filterInput = input; }}
           aria-label="Filter lines by the name of line, stop or station"></input>
-        <div className="flex flex-wrap">
+        <div className="flex flex-column flex-row-ns flex-wrap-ns">
           {filteredLines.map((l, index) => <Line data={l} key={`${index}${l.id}`} />)}
         </div>
       </section>

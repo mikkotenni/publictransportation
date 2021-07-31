@@ -18,7 +18,7 @@ function Line(props) {
 
   return (
     <Link
-      className="no-underline dark-gray db bg-animate bg-near-white hover-bg-white pa3 pt0 mt2 br1"
+      className="no-underline dark-gray db bg-animate bg-near-white hover-bg-white pa3 pt0-ns mt2 br1"
       style={{ flexBasis: '50%' }}
       to={`/line-details/${type}/${id}`}
       aria-label="See details for a list of stops or stations">

@@ -27,7 +27,7 @@ function BasicLineInfo(props) {
         </span>
         {props.number}
       </div>
-      <h4>{props.name}</h4>
+      <h2 className="f6 f4-ns">{props.name}</h2>
     </header>
   )
 }

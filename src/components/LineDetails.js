@@ -55,7 +55,7 @@ class LineDetails extends Component {
             <i className="fas fa-arrow-alt-circle-left"></i> All transportation lines
           </Link>
         </nav>
-        <section className="bg-white ph3 pb3 mt2">
+        <section className="bg-white mt2 pt3 pt0-ns ph3">
           <BasicLineInfo type={this.state.details.type}
             color={`#${this.state.details.color}`}
             number={this.state.details.id}
