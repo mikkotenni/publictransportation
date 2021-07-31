@@ -25,8 +25,9 @@ class LineDetails extends Component {
 
   render() {
     const haltsRows = this.state.details.halts.map((h, index) => {
+      // Key requires some special attention as there are duplicates in data.
       return (
-        <tr key={h.id} className="striped--near-white">
+        <tr key={`${index}${h.id}`} className="striped--near-white">
           <td className="pv2 ph3 tl">{h.name}</td>
           <td className="pv2 ph3 tc">{this.state.details.originStopOrStation === h.id && <i className="fas fa-circle f7"></i>}</td>
           <td className="pv2 ph3 tc">{this.state.details.endingStopOrStation === h.id && <i className="fas fa-circle f7"></i>}</td>
