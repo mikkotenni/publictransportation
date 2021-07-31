@@ -8,17 +8,14 @@
 function GetFilteredLines(filterStr, lines) {
   return lines.filter(line => {
     const filterRegExp = new RegExp(filterStr.replace(/\s+/g, ''), 'gi');
-    let isIncluded = filterRegExp.test(line.name.replace(/\s+/g, ''));
+    let included = filterRegExp.test(line.name.replace(/\s+/g, ''));
 
-    /*
-    * If line isn't included based on it's name, let's see if it should be included
-    * based on halts.
-    */
-    if (isIncluded === false) {
-        isIncluded = line.halts.some(h => filterRegExp.test(h.name.replace(/\s+/g, '')));
+    // See if line should be included based on halts.
+    if (included === false) {
+        included = line.halts.some(h => filterRegExp.test(h.name.replace(/\s+/g, '')));
     }
 
-    return isIncluded;
+    return included;
   });
 }
 

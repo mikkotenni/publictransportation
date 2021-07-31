@@ -16,7 +16,7 @@ const lineTypesWithStations = ['m'];
 * @returns {object} - detailed information of given line. 
 */
 const GetLineDetails = (type, id) => {
-  // Returned Promise will be able to access type and id from outer scope (closures).
+  // Returned Promise can access type/id (closures).
   return new Promise((resolve, reject) => {
     setTimeout(() => {
       const lines = linesMap.get(type);
@@ -29,7 +29,7 @@ const GetLineDetails = (type, id) => {
       }
       const line = lineById.node;
 
-      // Copy instead of referencing...
+      // Copy...
       const details = {...line, type};
       // ...and extend with more information.
       if (lineTypesWithStops.includes(details.type)) {
