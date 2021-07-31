@@ -18,7 +18,7 @@ class Lines extends Component {
       const lines = await GetLines;
       this.setState({ lines });
     } catch (e) {
-      // TODO: Proper error handling if data fetching goes south.
+      console.error(e);
     }
   }
 

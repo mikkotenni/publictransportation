@@ -13,6 +13,10 @@ function getHalts(edges) {
 // Provides information about all lines.
 const GetLines = new Promise((resolve, reject) => {
   setTimeout(() => {
+    if (!lines) {
+      reject('No lines data available');
+    }
+
     // FIXME: O(n2) algorithm into something more efficient.
     let bLines = lines.data.bLines.edges.map(line => {
       const { id, name, color } = line.node;
