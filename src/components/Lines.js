@@ -42,7 +42,7 @@ class Lines extends Component {
           placeholder="Filter by names..."
           className="pa3 w-100 ba br1 b--gray"></input>
         <div className="flex flex-wrap">
-          {filteredLines.map((line, index) => <Line data={line} key={index + '_' + line.id} />)}
+          {filteredLines.map((l, index) => <Line data={l} key={`${index}${l.id}`} />)}
         </div>
       </section>
     )
