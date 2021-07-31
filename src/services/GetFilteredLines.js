@@ -15,7 +15,7 @@ function GetFilteredLines(filterStr, lines) {
     * based on stop or station names it has.
     */
     if (isIncluded === false) {
-        isIncluded = line.stopsOrStations.some(s => filterRegExp.test(s.name.replace(/\s+/g, '')));
+        isIncluded = line.halts.some(s => filterRegExp.test(s.name.replace(/\s+/g, '')));
     }
 
     return isIncluded;

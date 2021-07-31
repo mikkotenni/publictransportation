@@ -40,7 +40,7 @@ const GetLineDetails = (type, id) => {
         */
         details.originStopOrStation = line.originStop ? line.originStop.id : null;
         details.endingStopOrStation = line.endingStop ? line.endingStop.id : null;
-        details.stopsOrStations = line.stops.edges.map(stop => {
+        details.halts = line.stops.edges.map(stop => {
           return {
             name: stop.node.name,
             id: stop.node.id,
@@ -57,7 +57,7 @@ const GetLineDetails = (type, id) => {
       if (lineTypesWithStations.includes(details.type)) {
         details.originStopOrStation = line.originStation ? line.originStation.id : null;
         details.endingStopOrStation = line.endingStation ? line.endingStation.id : null;
-        details.stopsOrStations = line.stations.edges.map(station => {
+        details.halts = line.stations.edges.map(station => {
           return {
             name: station.node.name,
             id: station.node.id,

@@ -11,7 +11,7 @@ import Spinner from './Spinner';
 class LineDetails extends Component {
   constructor() {
     super();
-    this.state = { details: { stopsOrStations: [] } };
+    this.state = { details: { halts: [] } };
   }
 
   async componentDidMount() {
@@ -39,7 +39,7 @@ class LineDetails extends Component {
         </nav>
         <section className="bg-white ph3 pb3 mt2">
           <BasicLineInfo data={this.state.details} />
-          {this.state.details.stopsOrStations.length > 0 &&
+          {this.state.details.halts.length > 0 &&
             <table className="w-100">
               <thead>
                 <tr>
@@ -50,7 +50,7 @@ class LineDetails extends Component {
                 </tr>
               </thead>
               <tbody>
-                {this.state.details.stopsOrStations.map((s, index) => {
+                {this.state.details.halts.map((s, index) => {
                   return (
                     <tr key={index} className="striped--near-white">
                       <td className="pv2 ph3 tl">{s.name}</td>

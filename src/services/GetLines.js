@@ -1,15 +1,16 @@
+// CORS prevents actual requests, using static data instead.
 import lines from "./lines.js";
 
-// CORS prevents actual requests which I'm imitating here.
+// Provides information about all lines.
 const GetLines = new Promise((resolve, reject) => {
   setTimeout(() => {
     /*
     * FIXME: O(n2) algorithm into something more efficient. Now there's nested
     * iterations. No CRUD actions involved at the moment.
     */
-    let busLines = lines.data.bLines.edges.map(line => {
+    let bLines = lines.data.bLines.edges.map(line => {
       const { id, name, color } = line.node;
-      const stopsOrStations = line.node.stops.edges.map(stop => {
+      const halts = line.node.stops.edges.map(stop => {
         return {
           name: stop.node.name,
         }
@@ -19,12 +20,12 @@ const GetLines = new Promise((resolve, reject) => {
         name,
         color,
         type: 'b',
-        stopsOrStations
+        halts
       }
     });
-    let metroLines = lines.data.mLines.edges.map(line => {
+    let mLines = lines.data.mLines.edges.map(line => {
       const { id, name, color } = line.node;
-      const stopsOrStations = line.node.stations.edges.map(station => {
+      const halts = line.node.stations.edges.map(station => {
         return {
           name: station.node.name,
         }
@@ -34,13 +35,13 @@ const GetLines = new Promise((resolve, reject) => {
         name,
         color,
         type: 'm',
-        stopsOrStations
+        halts
       }
     });
-    // Lines are sorted by id in ascending order. But in a way that subway lines come first.
-    busLines.sort((a, b) => (a.id - b.id));
-    metroLines.sort((a, b) => (a.id - b.id));
-    resolve(metroLines.concat(busLines));
+    // Lines are sorted by id in ascending order. Subway lines come first.
+    bLines.sort((a, b) => (a.id - b.id));
+    mLines.sort((a, b) => (a.id - b.id));
+    resolve(mLines.concat(bLines));
   }, 1000);
 
 });
