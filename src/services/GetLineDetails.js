@@ -1,5 +1,13 @@
 import lines from "./lines.js";
 
+// For choosing correct lines and data traversing by type.
+const linesMap = new Map([
+  ['b', lines.data.bLines.edges],
+  ['m', lines.data.mLines.edges],
+]);
+const lineTypesWithStops = ['b'];
+const lineTypesWithStations = ['m'];
+
 /*
 * CORS prevents actual requests which I'm merely pretending to be doing here.
 * @param {string} type - b for bus and m for subway.
@@ -10,13 +18,20 @@ const GetLineDetails = (type, id) => {
   // Returned Promise will be able to access type and id from outer scope (closures).
   return new Promise((resolve, reject) => {
     setTimeout(() => {
-      // FIXME: Handle correct lines array in case of having more than two types.
-      const linesByType = type === 'b' ? lines.data.bLines.edges : lines.data.mLines.edges;
-      const line = linesByType.find(l => {
-        return l.node.id === +id;
-      }).node;
+      const lines = linesMap.get(type);
+      if (!lines) {
+        reject('Type of lines was incorrect.');
+      }
+      const lineById = lines.find(l => l.node.id === +id);
+      if (!lineById) {
+        reject('Line id was not found.');
+      }
+      const line = lineById.node;
+
+      // Copy instead of referencing...
       const details = {...line, type};
-      if (details.type === 'b') {
+      // ...and extend with more information.
+      if (lineTypesWithStops.includes(details.type)) {
         /*
         * FIXME: Bus lines don't have this information apart from single exception.
         * Challenge states "The first and the last station should be highlighted.", so supposedly
@@ -36,7 +51,9 @@ const GetLineDetails = (type, id) => {
             lines: [],
           }
         });
-      } else {
+      }
+      
+      if (lineTypesWithStations.includes(details.type)) {
         details.originStopOrStation = line.originStation ? line.originStation.id : null;
         details.endingStopOrStation = line.endingStation ? line.endingStation.id : null;
         details.stopsOrStations = line.stations.edges.map(station => {
