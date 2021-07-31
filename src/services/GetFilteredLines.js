@@ -3,7 +3,7 @@
 * line name or in any of the stop/station names.
 * @param {string} filterStr - filtering string.
 * @param {array} lines - lines to be filtered.
-* @returns {array} - filtered lines. 
+* @returns {array} - filtered lines.
 */
 function GetFilteredLines(filterStr, lines) {
   return lines.filter(line => {
@@ -12,10 +12,10 @@ function GetFilteredLines(filterStr, lines) {
 
     /*
     * If line isn't included based on it's name, let's see if it should be included
-    * based on stop or station names it has.
+    * based on halts.
     */
     if (isIncluded === false) {
-        isIncluded = line.halts.some(s => filterRegExp.test(s.name.replace(/\s+/g, '')));
+        isIncluded = line.halts.some(h => filterRegExp.test(h.name.replace(/\s+/g, '')));
     }
 
     return isIncluded;
